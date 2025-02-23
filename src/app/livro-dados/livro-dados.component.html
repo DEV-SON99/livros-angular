@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <h2>Dados do Livro</h2>
+  <form (ngSubmit)="incluir()">
+    <div class="form-group">
+      <label for="titulo">Título</label>
+      <input type="text" class="form-control" id="titulo" [(ngModel)]="livro.titulo" name="titulo" required>
+    </div>
+
+    <div class="form-group">
+      <label for="resumo">Resumo</label>
+      <textarea class="form-control" id="resumo" [(ngModel)]="livro.resumo" name="resumo" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="autores">Autores (separados por vírgula)</label>
+      <input type="text" class="form-control" id="autores" [(ngModel)]="autoresInput" name="autores" required>
+    </div>
+
+    <div class="form-group">
+      <label for="editora">Editora</label>
+      <select class="form-control" id="editora" [(ngModel)]="livro.codEditora" name="codEditora" required (change)="logEditora()">
+        <option *ngFor="let editora of editoras" [value]="editora.codEditora">
+          {{ editora.nome }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Incluir</button>
+  </form>
+</div>
